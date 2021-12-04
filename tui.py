@@ -174,3 +174,24 @@ def serial_number():
     # TODO: Your code here
     serial_num = int(input('Enter a serial number for a record: '))
     return serial_num
+
+def observation_dates():
+    """
+    Task 7: Read in and return a list of observation dates.
+
+    The function should ask the user to enter some observation dates
+    This should be entered in the format dd/mm/yyyy where dd is two-digit day, mm is two digit month and yyyy is
+    a four digit year e.g. 01/22/2020
+    The function should return a list containing the specified observation dates.
+
+    :return: a list of observation dates
+    """
+    # TODO: Your code here
+    observation_dates = []
+    counter = 1 # used to determine when to exit the loop
+    number_of_dates = int(input('How many dates do you want to observe?: ')) # Prompt the user for the number of dates to observe
+    while counter <= number_of_dates: # A while condition to determine if more dates should be entered.
+        date = input('Enter a date in the format - dd/mm/yyyy: ')
+        observation_dates.append(date)
+        counter += 1
+    print(observation_dates)
