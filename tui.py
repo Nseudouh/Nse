@@ -59,7 +59,17 @@ def progress(operation, value):
     :return: does not return anything
     """
     # TODO: Your code here
-    pass
+    if value == 0:
+        status = 'has started'
+        print(f'{operation} {status}')
+    elif (value > 0) & (value < 100):
+        status = 'is in progress'
+        print(f'{operation} {status} ({value}% completed)')
+    elif value == 100:
+        status = 'has completed'
+        print(f'{operation} {status}')
+    else:
+        pass
 
 
 def menu(variant=0):
