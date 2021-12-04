@@ -227,3 +227,36 @@ def display_record(record, cols=None):
     else:
         record = [record[index] for index in cols]
         print(record)
+
+def display_records(records, cols=None):
+    """
+    Task 9: Display each record in the specified list of records.
+    Only the data for the specified column indexes will be displayed.
+    If no column indexes have been specified, then all the data for a movie will be displayed.
+
+    The function should have two parameters as follows:
+
+    records     which is a list of records where each record itself is a list of data values.
+    cols        this is a list of integer values that represent column indexes.
+                the default value for this is None.
+
+    You will need to add these parameters to the function definition.
+
+    The function should iterate through each record in records and display the record.
+
+    Each record should be displayed as a list of values e.g. [1,01/22/2020,Anhui,Mainland China,1/22/2020 17:00,1,0,0]
+    Only the columns whose indexes are included in cols should be displayed for each record.
+
+    If cols is an empty list or None then all values for the record should be displayed.
+
+    :param records: A list of records
+    :param cols: A list of integer values that represent column indexes
+    :return: Does not return anything
+    """
+    # TODO: Your code here
+    if cols == None:
+        print(records)
+    else:
+        records = [records[index] for index in cols]
+        print(records)
+
