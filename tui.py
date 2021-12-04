@@ -107,7 +107,44 @@ def menu(variant=0):
     :return: nothing if invalid selection otherwise an integer for a valid selection
     """
     # TODO: Your code here
-    pass
+    if variant == 0: # Use if condition to check the value of variant
+        print('[1] Process Data, [2] Query Database, [3] Visualise Data and [4] Exit') # Print the category of menu
+        response = int(input('Enter a number for your choice operation from the displayed options: '))
+        if response not in [1, 2, 3, 4]: # Check that user entry is valid
+            print('Invalid entry. Please enter a number from the displayed options.')
+        else:
+            return response
+    elif variant == 1:
+        print(
+            '[1] Record by Serial Number, [2] Records by Observation Date, [3] Group Records by Country/Region, [4] Summarise Records')
+        response = int(input('Enter a number for your choice operation from the displayed options: '))
+        if response not in [1, 2, 3, 4]: # Check that user entry is valid
+            print('Invalid entry. Please enter a number from the displayed options.')
+        else:
+            return response
+    elif variant == 2:
+        print('''
+        [1] Setup database
+        [2] Retrieve all countries in alphabetical order from the database
+        [3] Retrieve confirmed cases, deaths and recoveries for an observation from the database
+        [4] Retrieve top 5 countries for confirmed cases from the database from the database
+        [5] Retrieve top 5 countries for deaths for specific observation dates form the database
+        ''')
+        response = int(input('Enter a number for your choice operation from the displayed options: '))
+        if response not in [1, 2, 3, 4, 5]: # Check that user entry is valid
+            print('Invalid entry. Please enter a number from the displayed options.')
+        else:
+            return response
+    elif variant == 3:
+        print('[1] Country/Region Pie Chart, [2] Observations Chart, [3] Animated Summary')
+        response = int(input('Enter a number for your choice operation from the displayed options: '))
+        if response not in [1, 2, 3]:
+            print('Invalid entry. Please enter a number from the displayed options.')
+        else:
+            return response
+    else:
+        print('Invalid entry. Please enter a valid number - 0, 1, 2, or 3')
+
 
 
 def total_records(num_records):
