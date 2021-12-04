@@ -150,18 +150,19 @@ def menu(variant=0):
 def total_records(num_records):
     f"""
     Task 5: Display the total number of records in the data set.
-    
+
     The function should display a message in the following format:
 
     "There are {num_records} records in the data set."
 
     Where {num_records} is the value of the parameter passed to this function
-    
+
     :param num_records: the total number of movies in the data set
     :return: Does not return anything
     """
     # TODO: Your code here
-    pass
+    print(f'There are {num_records} records in the data set.')
+
 
 
 def serial_number():
@@ -247,3 +248,6 @@ def display_records():
     :return: Does not return anything
     """
     # TODO: Your code here
+
+
+
