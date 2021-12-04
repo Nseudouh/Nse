@@ -115,8 +115,7 @@ def menu(variant=0):
         else:
             return response
     elif variant == 1:
-        print(
-            '[1] Record by Serial Number, [2] Records by Observation Date, [3] Group Records by Country/Region, [4] Summarise Records')
+        print('[1] Record by Serial Number, [2] Records by Observation Date, [3] Group Records by Country/Region, [4] Summarise Records')
         response = int(input('Enter a number for your choice operation from the displayed options: '))
         if response not in [1, 2, 3, 4]: # Check that user entry is valid
             print('Invalid entry. Please enter a number from the displayed options.')
@@ -163,8 +162,6 @@ def total_records(num_records):
     # TODO: Your code here
     print(f'There are {num_records} records in the data set.')
 
-
-
 def serial_number():
     """
     Task 6: Read in the serial number of a record and return the serial number.
@@ -175,79 +172,5 @@ def serial_number():
     :return: the serial number for a record
     """
     # TODO: Your code here
-    pass
-
-
-def observation_dates():
-    """
-    Task 7: Read in and return a list of observation dates.
-
-    The function should ask the user to enter some observation dates
-    This should be entered in the format dd/mm/yyyy where dd is two-digit day, mm is two digit month and yyyy is
-    a four digit year e.g. 01/22/2020
-    The function should return a list containing the specified observation dates.
-
-    :return: a list of observation dates
-    """
-    # TODO: Your code here
-    pass
-
-
-def display_record(record, cols=None):
-    """
-    Task 8: Display a record. Only the data for the specified column indexes will be displayed.
-    If no column indexes have been specified, then all the data for the record will be displayed.
-
-    The parameter record is a list of values e.g. [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
-    The parameter cols is a list of column indexes e.g. [0,3,5]
-    The function should display a list of values.
-    The displayed list should only consist of those values whose column index is in cols.
-
-    E.g. if cols is [1,3] then for the record [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
-    the following should be displayed:
-    ['01/22/2020','Mainland China']
-
-    E.g. if cols is [0,1,4] then for the record [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
-    the following should be displayed:
-    [1,'01/22/2020','1/22/2020 17:00']
-
-    E.g. if cols is an empty list or None then all the values will be displayed
-    [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
-
-    :param record: A list of data values for a movie
-    :param cols: A list of integer values that represent column indexes
-    :return: Does not return anything
-    """
-    # TODO: Your code here
-    pass
-
-
-def display_records():
-    """
-    Task 9: Display each record in the specified list of records.
-    Only the data for the specified column indexes will be displayed.
-    If no column indexes have been specified, then all the data for a movie will be displayed.
-
-    The function should have two parameters as follows:
-
-    records     which is a list of records where each record itself is a list of data values.
-    cols        this is a list of integer values that represent column indexes.
-                the default value for this is None.
-
-    You will need to add these parameters to the function definition.
-
-    The function should iterate through each record in records and display the record.
-
-    Each record should be displayed as a list of values e.g. [1,01/22/2020,Anhui,Mainland China,1/22/2020 17:00,1,0,0]
-    Only the columns whose indexes are included in cols should be displayed for each record.
-
-    If cols is an empty list or None then all values for the record should be displayed.
-
-    :param records: A list of records
-    :param cols: A list of integer values that represent column indexes
-    :return: Does not return anything
-    """
-    # TODO: Your code here
-
-
-
+    serial_num = int(input('Enter a serial number for a record: '))
+    return serial_num
