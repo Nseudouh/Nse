@@ -36,7 +36,8 @@ def error(msg):
     :return: does not return anything
     """
     # TODO: Your code here
-    pass
+    error_msg = msg
+    print(f'Error! {error_msg}')
 
 
 def progress(operation, value):
