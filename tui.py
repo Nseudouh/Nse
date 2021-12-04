@@ -195,3 +195,35 @@ def observation_dates():
         observation_dates.append(date)
         counter += 1
     print(observation_dates)
+
+def display_record(record, cols=None):
+    """
+    Task 8: Display a record. Only the data for the specified column indexes will be displayed.
+    If no column indexes have been specified, then all the data for the record will be displayed.
+
+    The parameter record is a list of values e.g. [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
+    The parameter cols is a list of column indexes e.g. [0,3,5]
+    The function should display a list of values.
+    The displayed list should only consist of those values whose column index is in cols.
+
+    E.g. if cols is [1,3] then for the record [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
+    the following should be displayed:
+    ['01/22/2020','Mainland China']
+
+    E.g. if cols is [0,1,4] then for the record [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
+    the following should be displayed:
+    [1,'01/22/2020','1/22/2020 17:00']
+
+    E.g. if cols is an empty list or None then all the values will be displayed
+    [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]
+
+    :param record: A list of data values for a movie
+    :param cols: A list of integer values that represent column indexes
+    :return: Does not return anything
+    """
+    # TODO: Your code here
+    if cols == None:
+        print(record)
+    else:
+        record = [record[index] for index in cols]
+        print(record)
