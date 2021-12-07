@@ -258,7 +258,3 @@ def display_records(records, cols=None):
     else:
         records = [records[val] for val in cols]
         print(records)
-#
-# rec = [ [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0], [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]]
-# col = [1,2]
-# display_records(rec, col)

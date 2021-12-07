@@ -28,3 +28,10 @@ def get_total_records(records):
     num_of_records = len(records)
     # Display the number of records using the total_records function in the tui module
     tui.total_records(num_of_records)
+
+def get_record(records):
+    serial = tui.serial_number() # Prompt the user to enter a serial number using the serial_number function in the tui module
+    if serial not in range(len(records)):
+        print('Record not found.')
+    else:
+        return records[serial]
