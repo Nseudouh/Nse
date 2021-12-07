@@ -159,7 +159,6 @@ def total_records(num_records):
     :param num_records: the total number of movies in the data set
     :return: Does not return anything
     """
-    # TODO: Your code here
     print(f'There are {num_records} records in the data set.')
 
 def serial_number():
@@ -221,12 +220,13 @@ def display_record(record, cols=None):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
-    # TODO: Your code here
+
     if cols == None:
         print(record)
     else:
-        record = [record[index] for index in cols]
+        record = [record[val] for val in cols]
         print(record)
+
 
 def display_records(records, cols=None):
     """
@@ -253,10 +253,12 @@ def display_records(records, cols=None):
     :param cols: A list of integer values that represent column indexes
     :return: Does not return anything
     """
-    # TODO: Your code here
     if cols == None:
         print(records)
     else:
-        records = [records[index] for index in cols]
+        records = [records[val] for val in cols]
         print(records)
-
+#
+# rec = [ [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0], [1,'01/22/2020','Anhui','Mainland China','1/22/2020 17:00',1,0,0]]
+# col = [1,2]
+# display_records(rec, col)

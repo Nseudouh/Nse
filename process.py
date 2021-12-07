@@ -22,7 +22,9 @@ The required functions are as follows:
     - the total number of deaths
     - the total number of recoveries
 
- 
 """
-
-# TODO: Your code here
+import tui
+def get_total_records(records):
+    num_of_records = len(records)
+    # Display the number of records using the total_records function in the tui module
+    tui.total_records(num_of_records)
