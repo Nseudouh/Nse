@@ -23,6 +23,7 @@ The required functions are as follows:
     - the total number of recoveries
 """
 import tui
+import pandas as pd
 def get_total_records(records):
     num_of_records = len(records)
     # Display the number of records using the total_records function in the tui module
@@ -39,3 +40,8 @@ def get_record_of_observe_dates(records):
     dates = tui.observation_dates()
     records = [record for record in records if record[1] in dates]
     print(records)
+
+def get_record_by_region(records):
+    record_data = pd.DataFrame(records, columns= ['S/N', 'ObservationDate', 'Province', 'Country/Region', 'LastUpdate', 'Confirmed', 'Deaths', 'Recovered'])
+    country_group = record_data.groupby('Country').sum()
+    print(country_group.head())
