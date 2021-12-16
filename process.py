@@ -21,7 +21,6 @@ The required functions are as follows:
     - the total number of confirmed cases
     - the total number of deaths
     - the total number of recoveries
-
 """
 import tui
 def get_total_records(records):
@@ -35,3 +34,8 @@ def get_record(records):
         print('Record not found.')
     else:
         return records[serial]
+
+def get_record_of_observe_dates(records):
+    dates = tui.observation_dates()
+    records = [record for record in records if record[1] in dates]
+    print(records)
