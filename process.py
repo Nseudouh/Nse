@@ -45,3 +45,8 @@ def get_record_by_region(records):
     record_data = pd.DataFrame(records, columns= ['S/N', 'ObservationDate', 'Province', 'Country/Region', 'LastUpdate', 'Confirmed', 'Deaths', 'Recovered'])
     country_group = record_data.groupby('Country').sum()
     print(country_group.head())
+
+def record_summary(records):
+    record_data = pd.DataFrame(records, columns= ['S/No', 'ObservationDate', 'Province/State', 'Country/Region', 'LastUpdate','Confirmed', 'Deaths', 'Recovered'])
+    summarized_data = record_data[['Country/Region', 'Confirmed', 'Deaths', 'Recovered']].groupby('Country/Region').sum()
+    print(summarized_data)
