@@ -38,3 +38,15 @@ try: # A try & except block to connect to database or catch connection error
     cursor = connection.cursor() # Create a cursor object for executing sql queries
 except Error as e:
     print('Unable to establish connection to the database', e)
+
+
+def setup_database(records):
+        tuple_records = [tuple(record) for record in records] # Convert list of records to a format (tuple) required by the database
+        # Define the sql query to insert data into the database
+        query = 'INSERT INTO covid_19_data (SNo, ObservationDate, State, Country, LastUpdate, Confirmed, Deaths, Recovered) \
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+        cursor.executemany(query, tuple_records)
+        connection.commit() # Save changes to the database
+        print('Records populated successfully to the database')
+        if connection:
+            connection.close()
