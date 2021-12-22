@@ -50,3 +50,14 @@ def setup_database(records):
         print('Records populated successfully to the database')
         if connection:
             connection.close()
+
+
+def get_country_names():
+    # Define sql query to extract data
+    query = '''
+    SELECT DISTINCT Country FROM covid_19_data
+    ORDER BY 1 ASC
+    '''
+    cursor.execute(query)
+    records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
+    return records
