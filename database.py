@@ -27,5 +27,14 @@ required from the user to complete the querying.
 - Return a list of records as retrieved from the database
 
 """
+import tui
+import sqlite3
+from sqlite3 import Error
 
-# TODO: Your code here
+# Establish connection to the database
+connection = None
+try: # A try & except block to connect to database or catch connection error
+    connection = sqlite3.connect(r'C:\Users\nudou\Documents\com728_project_assignment\project_database.db')
+    cursor = connection.cursor() # Create a cursor object for executing sql queries
+except Error as e:
+    print('Unable to establish connection to the database', e)
