@@ -74,3 +74,16 @@ def get_case_stats_for_serial_no():
     cursor.execute(query)
     records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
     return records
+
+
+def get_top_5_countries_confirmed():
+    # Define sql query to extract data
+    query = '''
+    SELECT Country, sum(Confirmed) as total_confirmed FROM covid_19_data
+    GROUP BY 1
+    ORDER BY 2 DESC
+    LIMIT 5
+    '''
+    cursor.execute(query)
+    records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
+    return records
