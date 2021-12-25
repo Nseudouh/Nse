@@ -61,3 +61,16 @@ def get_country_names():
     cursor.execute(query)
     records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
     return records
+
+
+def get_case_stats_for_serial_no():
+    s_no = tui.serial_number() # Re-use the serial_number function from tui module
+    # Define sql query to extract data
+    query = '''
+    SELECT SNo, Confirmed, Deaths, Recovered
+    FROM covid_19_data
+    WHERE SNo = {0}
+    '''.format(s_no)
+    cursor.execute(query)
+    records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
+    return records
