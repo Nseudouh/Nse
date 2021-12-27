@@ -87,3 +87,19 @@ def get_top_5_countries_confirmed():
     cursor.execute(query)
     records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
     return records
+
+
+def get_top_5_countries_deaths():
+    dates = tui.observation_dates() # Re-use the observation_dates function from tui module
+    # Define sql query to extract data
+    query = '''
+    SELECT Country, sum(Deaths) as total_deaths FROM covid_19_data
+    WHERE ObservationDate IN {0}
+    GROUP BY 1
+    ORDER BY 2 DESC
+    LIMIT 5
+    '''.format(tuple(dates))
+    cursor.execute(query)
+    records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
+    return records
+
