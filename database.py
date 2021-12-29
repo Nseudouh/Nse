@@ -103,3 +103,26 @@ def get_top_5_countries_deaths():
     records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
     return records
 
+
+def get_case_statistics():
+    country = input('Enter the name of the country/region you want to get case statistics for: ')
+    # Define sql query to extract data
+    query = '''
+    SELECT ObservationDate, Confirmed, Deaths, Recovered
+    FROM covid_19_data
+    WHERE Country = '{0}'
+    '''.format(country)
+    cursor.execute(query)
+    records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
+    return records
+
+
+
+
+if __name__ =='__main__':
+    pass
+    #print(get_case_statistics())
+    #print(get_case_stats_for_serial_no())
+    #print(get_top_5_countries_deaths())
+    #print(get_top_5_countries_confirmed())
+
