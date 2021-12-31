@@ -43,3 +43,19 @@ def display_top_5_countries_deaths():
     plt.bar(label, values)
     plt.title('Top 5 countries for death for observation dates')
     plt.show()
+    
+
+def display_case_statistics():
+    ax = plt.gca() # Create a plot axis
+    records = database.get_case_statistics()
+    records_df = pd.DataFrame(records, columns= ['ObservationDate', 'Confirmed', 'Deaths', 'Recovered'])
+    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Confirmed', color= 'green', ax = ax)
+    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Deaths', color= 'blue', ax = ax)
+    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Recovered', color= 'red', ax = ax)
+    plt.ylabel('Cases')
+    plt.xlabel('Date')
+    plt.title('Confirmed, deaths and recovery case over time')
+    plt.show()
+
+if __name__ == '__main__':
+    pass
