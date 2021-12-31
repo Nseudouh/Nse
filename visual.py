@@ -34,3 +34,12 @@ def display_top_5_countries_confirmed():
     plt.pie(values, labels = label, autopct= absolute_value)
     plt.title('Top 5 countries for confirmed cases')
     plt.show()
+
+
+def display_top_5_countries_deaths():
+    country_names = database.get_top_5_countries_deaths()
+    values = np.array([item[1] for item in country_names])
+    label = [item[0] for item in country_names]
+    plt.bar(label, values)
+    plt.title('Top 5 countries for death for observation dates')
+    plt.show()
