@@ -37,12 +37,24 @@ def run():
     # - Use the appropriate functions in the module 'tui' to display a message to indicate how many records have
     # been loaded and that the data loading operation has completed.
     # TODO: Your code here
+    tui.progress('Data loading operation', 0)
+    try:
+        with open('./data/covid_19_data.csv', 'r') as covid_19_data:
+            data = csv.reader(covid_19_data)
+            for record in data:
+                covid_records.append(record)
+    except FileNotFoundError as e:
+        print('File is not available. Check that the covid_19_data data is in the "data" folder')
+    total_num_records = len(covid_records)
+    tui.total_records(total_num_records)
+    tui.progress('Data loading operation', 100)
 
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
         # for the different operations that can be performed on the data (menu variant 0).
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
+
 
         # Task 15: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
@@ -88,7 +100,30 @@ def run():
         #       - Use the appropriate function in the module 'tui' to indicate that the summary
         #       process has completed.
         # TODO: Your code here
-
+        response = tui.menu(0)
+        if response == 1:
+            tui.progress('Data processing', 0)
+            option = tui.menu(1)
+            if option == 1:
+                tui.progress('Record retrieval process', 0)
+                record = process.get_record(covid_records)
+                tui.display_record(record)
+                tui.progress('Record retrieval process', 100)
+            elif option == 2:
+                tui.progress('Record retrieval process', 0)
+                records = process.get_record_of_observe_dates(covid_records)
+                tui.display_records(records)
+                tui.progress('Record retrieval process', 100)
+            elif option == 3:
+                tui.progress('Record grouping by country/region', 0)
+                records = process.get_record_by_region(covid_records)
+                tui.display_records(records)
+                tui.progress('Record grouping by country/region', 100)
+            elif option == 4:
+                tui.progress('Summarise Records', 0)
+                records = process.record_summary(covid_records)
+                tui.display_records(records)
+                tui.progress('Summarise Records', 100)
         # Task 21: Check if the user selected the option for setting up or querying the database.
         # If so, then do the following:
         # - Use the appropriate function in the module 'tui' to display a message to indicate that the
