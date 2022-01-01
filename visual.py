@@ -43,7 +43,7 @@ def display_top_5_countries_deaths():
     plt.bar(label, values)
     plt.title('Top 5 countries for death for observation dates')
     plt.show()
-    
+
 
 def display_case_statistics():
     ax = plt.gca() # Create a plot axis
