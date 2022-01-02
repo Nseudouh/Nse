@@ -191,6 +191,10 @@ def run():
         # If so, then break out of the loop
         # TODO: Your code here
 
+        elif response == 4:
+            print('Bye...')
+            break
+
         # Task 32: If the user selected an invalid option then use the appropriate function of the
         # module tui to display an error message
         # TODO: Your code here
