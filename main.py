@@ -136,6 +136,32 @@ def run():
         # database querying operation has completed.
         # TODO: Your code here
 
+
+        elif response == 2:
+            tui.progress('Database querying operation', 0)
+            option = tui.menu(2)
+            if option == 1:
+                database.setup_database(covid_records)
+            elif option == 2:
+                country_records = database.get_country_names()
+                tui.display_records(country_records)
+                tui.progress('Retrieval of countries', 100)
+            elif option == 3:
+                case_stats = database.get_case_stats_for_serial_no()
+                tui.display_records(case_stats)
+                tui.progress('Retrieval of Confirmed, deaths and recoveries cases', 100)
+            elif option == 4:
+                top_5_countries_confirmed = database.get_top_5_countries_confirmed()
+                tui.display_records(top_5_countries_confirmed)
+                tui.progress('Retrieval of top 5 countries for confirmed cases', 100)
+            elif option == 5:
+                top_5_countries_death = database.get_top_5_countries_deaths()
+                tui.display_records(top_5_countries_death)
+                tui.progress('Retrieval of top 5 countries for deaths for specific observation dates', 100)
+            else:
+                pass
+
+
         # Task 27: Check if the user selected the option for visualising data.
         # If so, then do the following:
         # - Use the appropriate function in the module 'tui' to indicate that the data visualisation operation
