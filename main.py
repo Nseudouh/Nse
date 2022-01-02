@@ -199,6 +199,10 @@ def run():
         # module tui to display an error message
         # TODO: Your code here
 
+        else:
+            message = 'Invalid entry. Please enter a value between 1 and 4'
+            tui.error(message)
+
         pass  # can remove
 
 
