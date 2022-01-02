@@ -173,6 +173,20 @@ def run():
         # data visualisation operation has completed.
         # TODO: Your code here
 
+        elif response == 3:
+            tui.progress('Visualise Data operation', 0)
+            option = tui.menu(3)
+            if option == 1:
+                visual.display_top_5_countries_confirmed()
+                tui.progress('Visualization of the top 5 countries for confirmed cases using a pie chart', 100)
+            elif option == 2:
+                visual.display_top_5_countries_deaths()
+                tui.progress('Visualization of the top 5 countries for death for specific dates using a bar chart', 100)
+            elif option == 3:
+                visual.display_case_statistics()
+                tui.progress('Visualization of Animated Summary', 100)
+
+
         # Task 31: Check if the user selected the option for exiting the program.
         # If so, then break out of the loop
         # TODO: Your code here
