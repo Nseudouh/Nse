@@ -17,7 +17,6 @@ the data using Matplotlib.
 
 # TODO: Your code here
 
-import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 import database
@@ -46,15 +45,18 @@ def display_top_5_countries_deaths():
 
 
 def display_case_statistics():
-    ax = plt.gca() # Create a plot axis
-    records = database.get_case_statistics()
-    records_df = pd.DataFrame(records, columns= ['ObservationDate', 'Confirmed', 'Deaths', 'Recovered'])
-    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Confirmed', color= 'green', ax = ax)
-    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Deaths', color= 'blue', ax = ax)
-    records_df.plot(kind= 'line', x = 'ObservationDate', y = 'Recovered', color= 'red', ax = ax)
+    records_country = database.get_case_statistics()
+    ObservationDate = [record[0] for record in records_country[0]]
+    Confirmed = [record[1] for record in records_country[0]]
+    Deaths = [record[2] for record in records_country[0]]
+    Recovered = [record[3] for record in records_country[0]]
+    plt.plot(ObservationDate, Confirmed, label='Confirmed')
+    plt.plot(ObservationDate, Deaths, label='Deaths')
+    plt.plot(ObservationDate, Recovered, label='Recovered')
+    plt.xlabel('ObservationDates')
     plt.ylabel('Cases')
-    plt.xlabel('Date')
-    plt.title('Confirmed, deaths and recovery case over time')
+    plt.legend()
+    plt.title(f'Confirmed, Deaths & Recovery Cases over time for {records_country[1]}')
     plt.show()
 
 if __name__ == '__main__':
