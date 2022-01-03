@@ -54,23 +54,21 @@ def get_record_by_region(records):
             record_group[record[3]].append(record)
     return record_group
 
-
 def record_summary(records):
     summarized_records = {}
     record_by_region = get_record_by_region(records)
     for region in record_by_region:
-        region_cases = np.array([record[5:] for record in record_by_region[region]], dtype=np.int32)
+        region_cases = np.array([record[5:] for record in record_by_region[region]], dtype= np.int32)
         region_summary = list(sum(region_cases))
-        summarized_records[region] = {'total_confirmed': region_summary[0], 'total_deaths': region_summary[1],
-                                      'total_recovered': region_summary[2]}
+        summarized_records[region] = {'total_confirmed' :region_summary[0], 'total_deaths': region_summary[1], 'total_recovered': region_summary[2]}
     return summarized_records
 
 
 if __name__ == '__main__':
-    rec = [[1, '01/22/2020', 'London', 'UK', '1/22/2020 17:00', 6, 4, 5],
-           [2, '01/23/2020', 'Lagos', 'Nigeria', '1/23/2020 17:00', 4, 2, 1],
-           [3, '01/24/2020', 'Lagos', 'Nigeria', '1/26/2020 17:00', 6, 3, 1],
+    rec = [[1, '01/22/2020', 'London', 'UK', '1/22/2020 17:00', 50, 20, 5],
+           [2, '01/23/2020', 'Lagos', 'Nigeria', '1/23/2020 17:00', 100, 2, 1],
+           [3, '01/24/2020', 'Lagos', 'Nigeria', '1/26/2020 17:00', 30, 3, 1],
            [4, '01/26/2020', 'Accra', 'Ghana', '1/29/2020 17:00', 4, 5, 6],
            [5, '01/29/2020', 'Ontario', 'Cannada', '1/22/2020 17:00', 4, 5, 6],
            [6, '01/28/2020', 'Manchester', 'UK', '1/29/2020 17:00', 4, 5, 6]]
-    print(get_record_of_observe_dates(rec))
+    print(record_summary(rec))
