@@ -193,7 +193,7 @@ def observation_dates():
         date = input('Enter a date in the format - dd/mm/yyyy: ')
         observation_dates.append(date)
         counter += 1
-    print(observation_dates)
+    return observation_dates
 
 def display_record(record, cols=None):
     """

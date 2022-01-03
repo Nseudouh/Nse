@@ -31,11 +31,11 @@ def get_total_records(records):
 
 
 def get_record(records):
-    serial = tui.serial_number()  # Prompt the user to enter a serial number using the serial_number function in the tui module
-    if serial not in range(len(records)):
+    serial = tui.serial_number() # Prompt the user to enter a serial number using the serial_number function in the tui module
+    if serial not in range(len(records) + 1):
         print('Record not found.')
     else:
-        return records[serial]
+        return records[serial -1]
 
 
 def get_record_of_observe_dates(records):
@@ -67,4 +67,10 @@ def record_summary(records):
 
 
 if __name__ == '__main__':
-    pass
+    rec = [[1, '01/22/2020', 'London', 'UK', '1/22/2020 17:00', 6, 4, 5],
+           [2, '01/23/2020', 'Lagos', 'Nigeria', '1/23/2020 17:00', 4, 2, 1],
+           [3, '01/24/2020', 'Lagos', 'Nigeria', '1/26/2020 17:00', 6, 3, 1],
+           [4, '01/26/2020', 'Accra', 'Ghana', '1/29/2020 17:00', 4, 5, 6],
+           [5, '01/29/2020', 'Ontario', 'Cannada', '1/22/2020 17:00', 4, 5, 6],
+           [6, '01/28/2020', 'Manchester', 'UK', '1/29/2020 17:00', 4, 5, 6]]
+    print(get_record_of_observe_dates(rec))
