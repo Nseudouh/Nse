@@ -20,17 +20,19 @@ the data using Matplotlib.
 import matplotlib.pyplot as plt
 import numpy as np
 import database
-import matplotlib.animation as animation
+
 
 def display_top_5_countries_confirmed():
     country_names = database.get_top_5_countries_confirmed()
     values = np.array([item[1] for item in country_names])
     label = [item[0] for item in country_names]
+
     # A function to compute values to be displayed on each wedge of the pie chart
     def absolute_value(x):
-        x = np.round(x/100 * values.sum(), 0)
+        x = np.round(x / 100 * values.sum(), 0)
         return x
-    plt.pie(values, labels = label, autopct= absolute_value)
+
+    plt.pie(values, labels=label, autopct=absolute_value)
     plt.title('Top 5 countries for confirmed cases')
     plt.show()
 
@@ -58,6 +60,7 @@ def display_case_statistics():
     plt.legend()
     plt.title(f'Confirmed, Deaths & Recovery Cases over time for {records_country[1]}')
     plt.show()
+
 
 if __name__ == '__main__':
     pass
