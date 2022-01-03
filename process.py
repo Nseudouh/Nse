@@ -23,30 +23,48 @@ The required functions are as follows:
     - the total number of recoveries
 """
 import tui
-import pandas as pd
+import numpy as np
+
 def get_total_records(records):
     num_of_records = len(records)
-    # Display the number of records using the total_records function in the tui module
-    tui.total_records(num_of_records)
+    return num_of_records
+
 
 def get_record(records):
-    serial = tui.serial_number() # Prompt the user to enter a serial number using the serial_number function in the tui module
+    serial = tui.serial_number()  # Prompt the user to enter a serial number using the serial_number function in the tui module
     if serial not in range(len(records)):
         print('Record not found.')
     else:
         return records[serial]
 
+
 def get_record_of_observe_dates(records):
     dates = tui.observation_dates()
     records = [record for record in records if record[1] in dates]
-    print(records)
+    return records
+
 
 def get_record_by_region(records):
-    record_data = pd.DataFrame(records, columns= ['S/N', 'ObservationDate', 'Province', 'Country/Region', 'LastUpdate', 'Confirmed', 'Deaths', 'Recovered'])
-    country_group = record_data.groupby('Country').sum()
-    print(country_group.head())
+    record_group = {}
+    for record in records:
+        if record[3] not in record_group:
+            record_group[record[3]] = []
+            record_group[record[3]].append(record)
+        else:
+            record_group[record[3]].append(record)
+    return record_group
+
 
 def record_summary(records):
-    record_data = pd.DataFrame(records, columns= ['S/No', 'ObservationDate', 'Province/State', 'Country/Region', 'LastUpdate','Confirmed', 'Deaths', 'Recovered'])
-    summarized_data = record_data[['Country/Region', 'Confirmed', 'Deaths', 'Recovered']].groupby('Country/Region').sum()
-    print(summarized_data)
+    summarized_records = {}
+    record_by_region = get_record_by_region(records)
+    for region in record_by_region:
+        region_cases = np.array([record[5:] for record in record_by_region[region]], dtype=np.int32)
+        region_summary = list(sum(region_cases))
+        summarized_records[region] = {'total_confirmed': region_summary[0], 'total_deaths': region_summary[1],
+                                      'total_recovered': region_summary[2]}
+    return summarized_records
+
+
+if __name__ == '__main__':
+    pass
