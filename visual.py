@@ -15,11 +15,10 @@ You may add additional methods to the module 'database' if needed. Each function
 the data using Matplotlib.
 """
 
-# TODO: Your code here
-
 import matplotlib.pyplot as plt
 import numpy as np
 import database
+from matplotlib.animation import FuncAnimation
 
 
 def display_top_5_countries_confirmed():

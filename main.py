@@ -47,6 +47,9 @@ def run():
     total_num_records = len(covid_records)
     tui.total_records(total_num_records)
     tui.progress('Data loading operation', 100)
+
+    # Populate database
+    #database.setup_database(covid_records)
     while True:
         # Task 14: Using the appropriate function in the module 'tui', display a menu of options
         # for the different operations that can be performed on the data (menu variant 0).

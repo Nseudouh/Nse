@@ -41,11 +41,11 @@ except Error as e:
 
 
 def setup_database(records):
-        tuple_records = [tuple(record) for record in records] # Convert list of records to a format (tuple) required by the database
+        #tuple_records = [tuple(record) for record in records] # Convert list of records to a format (tuple) required by the database
         # Define the sql query to insert data into the database
         query = 'INSERT INTO covid_19_data (SNo, ObservationDate, State, Country, LastUpdate, Confirmed, Deaths, Recovered) \
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-        cursor.executemany(query, tuple_records)
+        cursor.executemany(query, records)
         connection.commit() # Save changes to the database
         print('Records populated successfully to the database')
         if connection:
@@ -114,15 +114,11 @@ def get_case_statistics():
     '''.format(country)
     cursor.execute(query)
     records = [list(record) for record in cursor.fetchall()] # Covert records of tuple to list of records
-    return records
+    return records, country
 
 
 
 
 if __name__ =='__main__':
     pass
-    #print(get_case_statistics())
-    #print(get_case_stats_for_serial_no())
-    #print(get_top_5_countries_deaths())
-    #print(get_top_5_countries_confirmed())
 
